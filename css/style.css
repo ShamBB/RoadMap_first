@@ -1,0 +1,272 @@
+:root {
+  --dark-blue-color: #242e4c;
+  --darker-blue-color: #1a2950;
+  --light-blue-color: #738bfd;
+  --dark-orange-color: #f55623;
+  --regular-grey-color: #767e96;
+  --secondary-color: #e9eaed;
+  --light-secondary-color: #f3f4f6;
+  --font-bold: 700;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin: 0;
+  background-color: var(--light-secondary-color);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+/* ===== Typography ===== */
+main {
+  background-color: white;
+}
+
+h1 {
+  font-size: 1.75rem;
+}
+
+h2 {
+  font-size: 1rem;
+}
+
+h3,
+a,
+.input-placeholder {
+  font-size: 0.875rem;
+}
+
+h1,
+h2,
+h3,
+.section-title {
+  font-weight: var(--font-bold);
+}
+
+a {
+  text-decoration: none;
+}
+
+.basic-paragraph,
+.summary-label,
+.alert-message,
+.section-title {
+  font-size: 0.75rem;
+}
+
+a .input-placeholder,
+.basic-paragraph,
+.summary-label,
+.alert-message {
+  font-weight: 500;
+}
+
+.section-title {
+  color: var(--regular-grey-color);
+  font-weight: 600;
+}
+
+.cards-section .summary-label,
+.button-section .summary-label {
+  font-style: italic;
+}
+
+.box-container {
+  background-color: var(--light-secondary-color);
+}
+
+/* ===== Colors ===== */
+.dark-blue-color {
+  color: var(--dark-blue-color);
+}
+
+.light-blue-color {
+  color: var(--light-blue-color);
+}
+
+.dark-orange-color {
+  color: var(--dark-orange-color);
+}
+
+.regular-grey-color {
+  color: var(--regular-grey-color);
+}
+
+.secondary-color {
+  color: var(--secondary-color);
+}
+
+.light-secondary-color {
+  color: var(--light-secondary-color);
+}
+
+.darker-blue-color {
+  color: var(--darker-blue-color);
+}
+
+/* ===== Layout ===== */
+section {
+  position: relative;
+}
+
+section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 3px;
+  background-color: var(
+    --secondary-color
+  ); /* Adjust the border color as needed */
+}
+
+.main-wrapper {
+  /* border: 1px solid; */
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  max-width: 90%;
+  margin: 30px auto;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: minmax(1em, 1fr) minmax(150px, 500px) minmax(1em, 1fr);
+  row-gap: 1.4em;
+  overflow: hidden;
+}
+
+.main-grid > * {
+  grid-column: 2 / span 1;
+}
+
+@media (min-width: 768px) {
+  .main-grid {
+    display: grid;
+    grid-template-columns: minmax(5em, 0) repeat(4, minmax(150px, 1fr)) minmax(
+        5em,
+        0
+      );
+    grid-template-areas:
+      ". buttons buttons colors colors ."
+      ". inputs inputs fonts fonts ."
+      ". cards cards icons icons .";
+  }
+
+  .button-section {
+    grid-area: buttons;
+  }
+
+  .colors-section {
+    grid-area: colors;
+  }
+
+  .inputs-section {
+    grid-area: inputs;
+  }
+
+  .fonts-section {
+    grid-area: fonts;
+  }
+
+  .cards-section {
+    grid-area: cards;
+  }
+
+  .icons-section {
+    grid-area: icons;
+  }
+}
+
+.inner-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5em) repeat(2, 1fr);
+  /* grid-template-rows: 20px; */
+}
+
+.inner-grid > * {
+  grid-column: 2 / span 2;
+}
+
+.section-title {
+  grid-column: 1 / span 2;
+  background-color: var(--secondary-color);
+  max-width: 100px;
+  border-radius: 0 7px 7px 0;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .inner-grid {
+    grid-template-columns: subgrid;
+  }
+}
+
+/* ===== common layout ===== */
+.hex-color-list,
+.icons-section > ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* ==== button section  layout ===== */
+
+/* ===== colors section layout ===== */
+.colors-section {
+  font-size: 0.875rem;
+}
+
+.hex-color-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.hex-color-list > li {
+  width: 70px;
+  height: 70px;
+  background-color: #738bfd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== input section layout ===== */
+.form_input {
+  grid-column: 1 / -1;
+}
+
+/* ===== font-section ===== */
+.fonts-section > *:not(:first-child) {
+  margin: 10px 0;
+}
+
+/* ===== cards section layout ===== */
+
+.box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  justify-items: center;
+}
+
+.box-container-section {
+  margin: 1em 0;
+}
+
+.box {
+  min-width: 170px;
+  height: 100px;
+  background-color: white;
+}
+
+/* ===== icon section layout ===== */
