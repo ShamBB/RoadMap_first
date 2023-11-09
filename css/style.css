@@ -122,6 +122,30 @@ a .input-placeholder,
   color: var(--darker-blue-color);
 }
 
+.bg-dark-blue-color {
+  background-color: var(--dark-blue-color);
+}
+
+.bg-light-blue-color {
+  background-color: var(--light-blue-color);
+}
+
+.bg-dark-orange-color {
+  background-color: var(--dark-orange-color);
+}
+
+.bg-regular-grey-color {
+  background-color: var(--regular-grey-color);
+}
+
+.bg-secondary-color {
+  background-color: var(--secondary-color);
+}
+
+.bg-light-secondary-color {
+  background-color: var(--light-secondary-color);
+}
+
 /* ===== Layout ===== */
 section {
   position: relative;
@@ -242,14 +266,19 @@ section::before {
   border-radius: 5px;
 }
 
-.primary-btn {
+.btn-primary {
   color: white;
   background-color: var(--dark-blue-color);
 }
 
-.secondary-btn {
-  color: var(--dark-blue-color);
+.btn-secondary {
   background-color: var(--secondary-color);
+}
+
+.btn-secondary,
+.hex-color-list li .box-color,
+.hex-color-list > li:last-child {
+  color: var(--dark-blue-color);
 }
 
 /* ===== colors section layout ===== */
@@ -260,21 +289,33 @@ section::before {
 .hex-color-list {
   display: flex;
   flex-wrap: wrap;
+  align-items: start;
   gap: 1em;
 }
 
-.hex-color-list > li {
+.box-color {
   width: 70px;
   height: 70px;
-  background-color: #738bfd;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: white;
+}
+
+.info-box-color {
+  width: 70px;
+  font-size: 0.5rem;
+  font-style: italic;
+  margin-top: 0.75em;
 }
 
 /* ===== input section layout ===== */
 .form_input {
   grid-column: 1 / -1;
+}
+
+input:focus {
+  outline-color: var(--light-blue-color);
 }
 
 /* ===== font-section ===== */
