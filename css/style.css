@@ -48,6 +48,7 @@ h2 {
 
 h3,
 a,
+label,
 .input-placeholder {
   font-size: 0.875rem;
 }
@@ -55,6 +56,7 @@ a,
 h1,
 h2,
 h3,
+label,
 .section-title {
   font-weight: var(--font-bold);
 }
@@ -68,6 +70,9 @@ a {
 .alert-message,
 .section-title,
 .hex-color-list,
+.card-label,
+.label-btn-primary,
+.label-btn-secondary,
 button {
   font-size: 0.75rem;
 }
@@ -75,7 +80,10 @@ button {
 a .input-placeholder,
 .basic-paragraph,
 .summary-label,
-.alert-message {
+.label-btn-primary,
+.label-btn-secondary,
+.alert-message,
+.card-label {
   font-weight: 500;
 }
 
@@ -85,7 +93,11 @@ a .input-placeholder,
 }
 
 .cards-section .summary-label,
-.button-section .summary-label {
+.button-section .summary-label,
+.input-desc,
+.card-label,
+.label-btn-primary,
+.label-btn-secondary {
   font-style: italic;
 }
 
@@ -154,8 +166,8 @@ section {
 section::before {
   content: "";
   position: absolute;
-  top: 0;
   left: 0;
+  top: -100px;
   height: 100vh;
   width: 3px;
   background-color: var(
@@ -173,65 +185,73 @@ section::before {
 .main-grid {
   display: grid;
   grid-template-columns: minmax(1em, 1fr) minmax(150px, 500px) minmax(1em, 1fr);
-  row-gap: 1.4em;
+  row-gap: 5em;
   overflow: hidden;
-}
-
-.main-grid > * {
-  grid-column: 2 / span 1;
+  grid-template-areas:
+    ". . ."
+    ". buttons ."
+    ". inputs  ."
+    ". cards ."
+    ". colors ."
+    ". fonts ."
+    ". icons ."
+    ". . .";
 }
 
 @media (min-width: 768px) {
   .main-grid {
-    display: grid;
-    grid-template-columns: minmax(5em, 0) repeat(4, minmax(150px, 1fr)) minmax(
-        5em,
+    grid-template-columns: minmax(4em, 0) repeat(4, minmax(100px, 1fr)) minmax(
+        4em,
         0
       );
+    column-gap: 1em;
     grid-template-areas:
+      ". . . . . ."
       ". buttons buttons colors colors ."
       ". inputs inputs fonts fonts ."
-      ". cards cards icons icons .";
+      ". cards cards icons icons ."
+      ". . . . . .";
   }
+}
 
-  .button-section {
-    grid-area: buttons;
-  }
+.button-section {
+  grid-area: buttons;
+}
 
-  .colors-section {
-    grid-area: colors;
-  }
+.colors-section {
+  grid-area: colors;
+}
 
-  .inputs-section {
-    grid-area: inputs;
-  }
+.inputs-section {
+  grid-area: inputs;
+}
 
-  .fonts-section {
-    grid-area: fonts;
-  }
+.fonts-section {
+  grid-area: fonts;
+}
 
-  .cards-section {
-    grid-area: cards;
-  }
+.cards-section {
+  grid-area: cards;
+}
 
-  .icons-section {
-    grid-area: icons;
-  }
+.icons-section {
+  grid-area: icons;
 }
 
 .inner-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.5em) 200px repeat(2, 1fr);
+  /* grid-template-columns: subgrid; */
+  grid-template-columns: minmax(0.25em, 1.5em) repeat(2, 1fr) 1fr;
   row-gap: 0.75em;
   /* grid-template-rows: 20px; */
 }
 
 .inner-grid > * {
-  grid-column: 2 / span 2;
+  grid-column: 2 / -1;
 }
 
 .section-title {
-  grid-column: 1 / span 2;
+  grid-column: 1 / -1;
   background-color: var(--secondary-color);
   border-radius: 0 7px 7px 0;
   text-align: center;
@@ -241,12 +261,6 @@ section::before {
 
 .fonts-section .section-title {
   max-width: 170px;
-}
-
-@media (min-width: 768px) {
-  .inner-grid {
-    grid-template-columns: subgrid;
-  }
 }
 
 /* ===== common layout ===== */
@@ -312,6 +326,28 @@ section::before {
 /* ===== input section layout ===== */
 .form_input {
   grid-column: 1 / -1;
+  row-gap: 0.5em;
+}
+
+.input-desc {
+  grid-column: 4;
+  margin-left: 0.5em;
+  align-self: baseline;
+}
+
+.password-input {
+  width: 100%;
+}
+
+.container-input-password,
+.inputs-section input {
+  grid-column: 2 / -2;
+}
+
+.inputs-section input {
+  padding: 0.75em 0.85em;
+  border: 1px solid #c9cacc;
+  border-radius: 3px;
 }
 
 input:focus {
@@ -324,6 +360,9 @@ input:focus {
 }
 
 /* ===== cards section layout ===== */
+.card-label {
+  margin-bottom: 0.75em;
+}
 
 .box-container {
   display: grid;
@@ -341,4 +380,45 @@ input:focus {
   background-color: white;
 }
 
+.box-container-section:last-child .box {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
 /* ===== icon section layout ===== */
+.icon-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.icon-list > * {
+  margin: 0.5em;
+}
+
+@media (min-width: 900px) {
+  /* ===== button section ===== */
+  .button-section {
+    grid-auto-flow: dense;
+  }
+
+  .label-btn-primary,
+  .btn-primary {
+    grid-column: 2;
+  }
+
+  .label-btn-secondary,
+  .btn-secondary {
+    grid-column: 3;
+  }
+}
+
+@media (min-width: 768px) {
+  .inner-grid {
+    column-gap: 0.5em;
+    grid-auto-rows: min-content;
+  }
+
+  .fonts-section {
+    row-gap: 0;
+  }
+}

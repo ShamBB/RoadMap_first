@@ -20,19 +20,18 @@
     />
 
     <link rel="stylesheet" href="/css/style.css" />
-    
   </head>
 
   <body>
     <main class="main-wrapper main-grid">
       <section class="button-section inner-grid">
         <h2 class="section-title">BUTTONS</h2>
-          <h3 class="summary-label regular-grey-color">Default</h3>
-          <button class="btn btn-primary dark-blue-color">Primary Button</button>
-          <button class="btn btn-primary dark-blue-color">Primary Button</button>
-          <h3 class="summary-label regular-grey-color">Hovered</h3>
-          <button class="btn btn-secondary">Secondary Button</button>
-          <button class="btn btn-secondary">Secondary Button</button>
+        <h3 class="label-btn-primary regular-grey-color">Default</h3>
+        <button class="btn btn-primary dark-blue-color">Primary Button</button>
+        <button class="btn btn-primary dark-blue-color">Primary Button</button>
+        <h3 class="label-btn-secondary regular-grey-color">Hovered</h3>
+        <button class="btn btn-secondary">Secondary Button</button>
+        <button class="btn btn-secondary">Secondary Button</button>
       </section>
 
       <section class="colors-section inner-grid">
@@ -43,14 +42,12 @@
           <li class="bg-dark-orange-color box-color">#F55623</li>
           <li class="bg-regular-grey-color box-color">#767E96</li>
           <li>
-            <div class="bg-secondary-color box-color">
-              #E9EAED
+            <div class="bg-secondary-color box-color">#E9EAED</div>
+            <div class="summary-label regular-grey-color info-box-color">
+              Only secondary button background color
             </div>
-            <div class="summary-label regular-grey-color info-box-color">Only secondary button background color</div>
           </li>
-          <li class="bg-light-secondary-color box-color">
-            #F3F4F6
-          </li>
+          <li class="bg-light-secondary-color box-color">#F3F4F6</li>
         </ul>
       </section>
 
@@ -60,19 +57,36 @@
           <label for="fullName" class="fullName-label">Full name</label>
           <input
             type="text"
+            id="fullName"
             class="fullName-input"
             placeholder="ex. Lida Owen"
-            id="fullName"
           />
+          <h3 class="summary-label regular-grey-color input-desc">Default</h3>
 
           <label for="yourName">Your Name</label>
-          <input type="text" placeholder="Anthony Webb" id="yourName" />
+          <input type="text" id="yourName" placeholder="Anthony Webb" />
+          <h3 class="summary-label regular-grey-color input-desc">Filled</h3>
 
           <label>Password</label>
-          <input type="password" placeholder="5+ characters" id="password" />
+          <div class="container-input-password">
+            <input
+              type="password"
+              id="password"
+              class="password-input"
+              placeholder="5+ characters"
+            />
+            <h3 class="summary-label dark-orange-color">
+              Your password must be at least <strong>6 characters</strong> long.
+            </h3>
+          </div>
+
+          <h3 class="summary-label regular-grey-color input-desc">
+            Focused with error message
+          </h3>
 
           <label for="email">Email Address</label>
-          <input type="email" id="email" />
+          <input type="email" id="email" value="myemail@address.com" disabled />
+          <h3 class="summary-label regular-grey-color input-desc">Inactive</h3>
         </form>
       </section>
 
@@ -102,14 +116,14 @@
         <h2 class="section-title">Cards</h2>
         <div class="box-container">
           <div class="box-container-section">
-            <h3 class="summary-label regular-grey-color">
+            <h3 class="card-label regular-grey-color">
               Default Card Background
             </h3>
             <div class="box"></div>
           </div>
           <div class="box-container-section">
-            <h3 class="summary-label regular-grey-color">
-              Default Card Background
+            <h3 class="card-label regular-grey-color">
+              Hovered Card Background
             </h3>
             <div class="box"></div>
           </div>
@@ -128,13 +142,9 @@
           <li class="fa-solid fa-bars"></li>
           <li class="fa-solid fa-expand"></li>
           <li class="fa-solid fa-plus"></li>
-        </ul>
-        <ul class="icon-list-grey-out">
           <li class="fa-solid fa-user"></li>
           <li class="fa-regular fa-image"></li>
-        </ul>
-        </div>
-
+        
       </section>
     </main>
   </body>
